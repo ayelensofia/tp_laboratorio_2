@@ -38,7 +38,7 @@ int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname
         getstring("ingrese apellido",lastname,51);
         salary=getfloat("ingrese salario de 30000 hasta 100000 ","reingrese salario",30000,100000);
         sector=getint("ingrese sector de 1 a 20 ","ingrese sector valido",1,20);
-        employeeList[index].isEmpty=OCUPADO;
+
 
         employeeList[index].id=id;
         strcpy(employeeList[index].name,name);
@@ -52,14 +52,14 @@ int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname
     return index;
 
 }
-void printEmployees(Employee employeeList)
+void printEmployees(Employee aEmployee)
 {
-        printf("%8d%8s%8s%8f%8d%8d\n",employeeList.id,
-                          employeeList.name,
-                          employeeList.lastname,
-                          employeeList.salary,
-                          employeeList.sector,
-                          employeeList.isEmpty);
+        printf("%8d%8s%8s%8f%8d%8d\n",aEmployee.id,
+                          aEmployee.name,
+                          aEmployee.lastname,
+                          aEmployee.salary,
+                          aEmployee.sector,
+                          aEmployee.isEmpty);
 
 
 

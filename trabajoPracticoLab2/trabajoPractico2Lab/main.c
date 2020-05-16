@@ -22,6 +22,7 @@ int main()
         {
         case 1:
             addEmployee(listEmployee,EMPLOYEE,id,name,lastname,salary,sector,accountantEmployee);
+            accountantEmployee++;
             break;
         case 2:
 
