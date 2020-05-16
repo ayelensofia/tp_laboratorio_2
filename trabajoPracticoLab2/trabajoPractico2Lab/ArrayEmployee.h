@@ -17,3 +17,4 @@ int searchFree(Employee employeeList[],int len);
 int addEmployee(Employee employeeList[],int len,int id,char name[],char lastaname[],float,int sector,int accountant);
 void printEmployees(Employee employeeList);
 void printEmployeesList(Employee employeeList[],int len);
+int findEmployeeById(Employee employeeList[],int len,int id);

@@ -80,6 +80,25 @@ void printEmployeesList(Employee employeeList[],int len)
 
 
 }
+int findEmployeeById(Employee employeeList[],int len,int id)
+{
+    int index=-1;
+    int i;
+    for(i=0;i<len;i++)
+    {
+        if(employeeList[i].isEmpty==OCUPADO)
+        {
+            if(employeeList[i].id==id)
+            {
+                index=i;
+                break;
+            }
+
+        }
+
+    }
+    return index;
+}
     /*for(i=0;i<len;i++)
     {
 
