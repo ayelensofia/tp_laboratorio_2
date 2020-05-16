@@ -31,6 +31,22 @@ int main()
         case 3:
             removeEmployee(listEmployee,EMPLOYEE,id);
             break;
+        case 4:
+            printf("1.Listado de los empleados ordenados alfabeticamente por apellido y sector\n");
+            printf("2.Total y promedio de los salarios, y cuantos empleados superan el salario promedio\n");
+            opcion=getint("elija opcion","reingrese opcion",1,2);
+            switch(opcion)
+            {
+               case 1:
+                    printEmployeeSort(listEmployee,EMPLOYEE);
+
+                    break;
+               case 2:
+
+                   break;
+            }
+
+            break;
 
         }
 

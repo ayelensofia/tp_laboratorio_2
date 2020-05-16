@@ -20,3 +20,5 @@ void printEmployeesList(Employee employeeList[],int len);
 int findEmployeeById(Employee employeeList[],int len,int id);
 int modifyEmployee(Employee employeeList[],int len,int id);
 int removeEmployee(Employee employeeList[],int len,int id);
+int sortEmployeeAsc(Employee employeeList[],int len);
+int printEmployeeSort(Employee employeeList[],int len);
