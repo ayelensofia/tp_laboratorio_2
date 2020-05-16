@@ -13,6 +13,9 @@ int main()
     float salary;
     int sector;
     int accountantEmployee=0;
+    float totalSalary = 0.00;
+
+
 
     do
     {
@@ -21,8 +24,9 @@ int main()
         switch(opcion)
         {
         case 1:
-            addEmployee(listEmployee,EMPLOYEE,id,name,lastname,salary,sector,accountantEmployee);
+            addEmployee(listEmployee,EMPLOYEE,id,name,lastname,salary,sector,accountantEmployee,totalSalary);
             accountantEmployee++;
+
             break;
         case 2:
             modifyEmployee(listEmployee,EMPLOYEE,id);
@@ -42,7 +46,9 @@ int main()
 
                     break;
                case 2:
-
+                    printListSalaryTotal(listEmployee,EMPLOYEE);
+                     printListSalaryPromedy(listEmployee,EMPLOYEE,accountantEmployee);
+                     printEmployeeExceedsSalaryAverage(listEmployee,EMPLOYEE,accountantEmployee);
                    break;
             }
 

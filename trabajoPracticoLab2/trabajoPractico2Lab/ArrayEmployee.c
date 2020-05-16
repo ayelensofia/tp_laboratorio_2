@@ -27,17 +27,17 @@ int searchFree(Employee employeeList[],int len)
     }
     return index;
 }
-int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname[],float salary,int sector,int accountant)
+int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname[],float salary,int sector,int accountant,float totalSalary)
 {
     int index;
     index=searchFree(employeeList,len);
     if(index!=-1)
     {
         id=generadorId(1,accountant);
-        getstring("ingrese nombre",name,51);
-        getstring("ingrese apellido",lastname,51);
-        salary=getfloat("ingrese salario de 30000 hasta 100000 ","reingrese salario",30000,100000);
-        sector=getint("ingrese sector de 1 a 20 ","ingrese sector valido",1,20);
+        getstring("ingrese nombre: ",name,51);
+        getstring("ingrese apellido: ",lastname,51);
+        salary=getfloat("ingrese salario de 30000 hasta 100000: ","reingrese salario: ",30000,100000);
+        sector=getint("ingrese sector de 1 a 20: ","ingrese sector valido: ",1,20);
 
 
         employeeList[index].id=id;
@@ -46,14 +46,18 @@ int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname
         employeeList[index].salary=salary;
         employeeList[index].sector=sector;
         employeeList[index].isEmpty=OCUPADO;
+        totalSalary = salary + totalSalary;
+        printf("total salario en funcion es: %f\n",totalSalary);
+        printf("salario en funcion es: %f\n",salary);
 
     }
 
     return index;
 
 }
-void printEmployees(Employee aEmployee)
+int printEmployees(Employee aEmployee)
 {
+    int errorValue=-1;
         printf("%8d%8s%8s%8f%8d%8d\n",aEmployee.id,
                           aEmployee.name,
                           aEmployee.lastname,
@@ -61,23 +65,26 @@ void printEmployees(Employee aEmployee)
                           aEmployee.sector,
                           aEmployee.isEmpty);
 
+        errorValue=0;
 
+        return errorValue;
 
 }
-void printEmployeesList(Employee employeeList[],int len)
+int printEmployeesList(Employee employeeList[],int len)
 {
     int i;
+    int errorValue=-1;
 
          for(i=0;i<len;i++)
         {
           if(employeeList[i].isEmpty==OCUPADO)
             {
                 printEmployees(employeeList[i]);
-
+                errorValue=0;
 
             }
         }
-
+    return errorValue;
 
 }
 int findEmployeeById(Employee employeeList[],int len,int id)
@@ -366,4 +373,102 @@ int sortEmployeeDes(Employee employeeList[],int len)
     }
     return errorValue;
 
+}
+float salaryEmpployee(Employee employeeList[],int len)
+{
+    int i;
+    float salaryAccumulator=0;
+    int accountantSalary=0;
+    for(i=0;i<len;i++)
+    {
+        if(employeeList[i].isEmpty==OCUPADO)
+        {
+            salaryAccumulator=employeeList[i].salary+salaryAccumulator;
+            accountantSalary++;
+
+        }
+    }
+
+    return salaryAccumulator;
+}
+int printListSalaryTotal(Employee employeeList[],int len)
+{
+    int errorValue=-1;
+    float total;
+    total=salaryEmpployee(employeeList,len);
+    int i;
+
+          if(employeeList[i].isEmpty==OCUPADO)
+            {
+                printf("el total de salarios es:%.2f\n ",total);
+                errorValue=0;
+
+            }
+
+
+
+    return errorValue;
+}
+float SalaryPromedy(Employee listEmployee[],int len,int accountantEmployee)
+{
+    float salaryAcumulator;
+    float salaryPromedy=0;
+    salaryAcumulator=salaryEmpployee(listEmployee, len);
+    salaryPromedy = salaryAcumulator/accountantEmployee;
+
+
+    return salaryPromedy;
+
+}
+int printListSalaryPromedy(Employee listEmployee[],int len, int accountantEmployee)
+{
+    int errorValue=-1;
+    float promedy;
+    int i;
+    promedy=SalaryPromedy(listEmployee,len,accountantEmployee);
+       if(listEmployee[i].isEmpty==OCUPADO)
+            {
+                printf("el promedio de salarios es:%.2f\n ",promedy);
+                errorValue=0;
+
+            }
+
+    return errorValue;
+}
+int employeeExceedsSalaryAverage(Employee listEmployee[],int len,int accountantEmployee)
+{
+    int i;
+    int averageSalary;
+    int accountantHigherSalary=0;
+    averageSalary=SalaryPromedy(listEmployee,len,accountantEmployee);
+    for(i=0;i<len;i++)
+    {
+        if(listEmployee[i].isEmpty==OCUPADO)
+        {
+            if(listEmployee[i].salary>averageSalary)
+            {
+                accountantHigherSalary++;
+
+            }
+        }
+    }
+    return accountantHigherSalary;
+
+}
+int printEmployeeExceedsSalaryAverage(Employee listEmployee[],int len,int accountantEmployee)
+{
+    int errorValue=-1;
+    int i;
+    int quantityEmployeeExceedsSalaryAverage;
+    quantityEmployeeExceedsSalaryAverage=employeeExceedsSalaryAverage(listEmployee,len,accountantEmployee);
+    if(listEmployee[i].isEmpty==OCUPADO)
+            {
+                printf("la cantidad de empleados que superan el salario promedio es:%d\n ",quantityEmployeeExceedsSalaryAverage);
+                errorValue=0;
+
+            }
+
+
+                errorValue=0;
+    return errorValue;
 }
