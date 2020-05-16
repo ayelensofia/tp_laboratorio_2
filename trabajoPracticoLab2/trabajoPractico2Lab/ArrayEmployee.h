@@ -21,6 +21,7 @@ struct
  *
  */
 int initEmployee(Employee employeeList[],int);
+
 /** \brief buscar indice libre
  *
  * \param employeeList[] Employee array de empleados
@@ -29,6 +30,7 @@ int initEmployee(Employee employeeList[],int);
  *
  */
 int searchFree(Employee employeeList[],int len);
+
 /** \brief agrega un array de empleados existente
  *
  * \param employeeList[] Employee array de empleados
@@ -43,6 +45,7 @@ int searchFree(Employee employeeList[],int len);
  *
  */
 int addEmployee(Employee employeeList[],int len,int id,char name[],char lastaname[],float,int sector,int accountant);
+
 /** \brief muestra un empleado
  *
  * \param employeeList Employee un empleado
@@ -51,6 +54,7 @@ int addEmployee(Employee employeeList[],int len,int id,char name[],char lastanam
  *
  */
 int printEmployees(Employee employeeList);
+
 /** \brief muestra lista de empleados
  *
  * \param employeeList[] Employee array de empleados
@@ -59,6 +63,7 @@ int printEmployees(Employee employeeList);
  *
  */
 int printEmployeesList(Employee employeeList[],int len);
+
 /** \brief busca un empleado recibiendo como parametro de busqueda su id
  *
  * \param employeeList[] Employee array de empleados
