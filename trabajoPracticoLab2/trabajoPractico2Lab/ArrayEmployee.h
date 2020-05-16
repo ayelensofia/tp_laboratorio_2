@@ -19,3 +19,4 @@ void printEmployees(Employee employeeList);
 void printEmployeesList(Employee employeeList[],int len);
 int findEmployeeById(Employee employeeList[],int len,int id);
 int modifyEmployee(Employee employeeList[],int len,int id);
+int removeEmployee(Employee employeeList[],int len,int id);

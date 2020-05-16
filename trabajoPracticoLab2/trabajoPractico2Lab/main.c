@@ -26,7 +26,10 @@ int main()
             break;
         case 2:
             modifyEmployee(listEmployee,EMPLOYEE,id);
-           //printEmployeesList(listEmployee,EMPLOYEE);
+
+            break;
+        case 3:
+            removeEmployee(listEmployee,EMPLOYEE,id);
             break;
 
         }

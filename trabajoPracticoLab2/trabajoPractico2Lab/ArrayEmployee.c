@@ -118,7 +118,6 @@ int modifyEmployee(Employee employeeList[],int len,int id)
     printEmployeesList(employeeList,len);
     id=getint("ingrese id a modificar","ingrese id valido",1,1000);
     index=findEmployeeById(employeeList,len,id);
-    printf("index es: %d\n",index);
     if(index!=-1)
     {
 
@@ -209,6 +208,48 @@ int modifyEmployee(Employee employeeList[],int len,int id)
 
     return retorno;
 
+}
+int removeEmployee(Employee employeeList[],int len,int id)
+{
+    int retorno=-1;
+    int i;
+    char respuesta[3];
+    char respuestaUsuario[3];
+    strcpy(respuesta,"no");
+    int index=-1;
+    printEmployeesList(employeeList,len);
+    id=getint("ingrese id a eliminar de 1 a 1000","reingrese id ",1,1000);
+    index=findEmployeeById(employeeList,len,id);
+    printf("el index es: %d\n",index);
+    if(index!=-1)
+    {
+        for(i=0;i<len;i++)
+         {
+            if(employeeList[i].isEmpty==OCUPADO && employeeList[i].id==id)
+            {
+                printf("se elimara a:\n");
+                printEmployees(employeeList[i]);
+                getstring("realizar eliminacion?",respuestaUsuario,3);
+                if(strcmp(respuestaUsuario,respuesta)>0)
+                {
+                     printf("elimacion completa\n");
+                    employeeList[i].isEmpty=LIBRE;
+                    retorno=0;
+
+
+                }else
+                    {
+
+                        printf("eliminacion cancelada\n");
+
+                    }
+            }
+         }
+
+    }
+
+
+        return retorno;
 }
 
 
