@@ -25,8 +25,8 @@ int main()
             accountantEmployee++;
             break;
         case 2:
-
-           printEmployeesList(listEmployee,EMPLOYEE);
+            modifyEmployee(listEmployee,EMPLOYEE,id);
+           //printEmployeesList(listEmployee,EMPLOYEE);
             break;
 
         }

@@ -99,16 +99,116 @@ int findEmployeeById(Employee employeeList[],int len,int id)
     }
     return index;
 }
-    /*for(i=0;i<len;i++)
+int modifyEmployee(Employee employeeList[],int len,int id)
+{
+    int i;
+    int retorno=-1;
+    int opcion;
+    int index;
+    char respuestaUsuario[3];
+    char respuesta[3];
+    char nombreAux[51];
+    char apellidoAux[51];
+    float salarioAux;
+    int sectorAux;
+    strcpy(respuesta,"no");
+    index=-1;
+
+
+    printEmployeesList(employeeList,len);
+    id=getint("ingrese id a modificar","ingrese id valido",1,1000);
+    index=findEmployeeById(employeeList,len,id);
+    printf("index es: %d\n",index);
+    if(index!=-1)
     {
 
-            printf("LISTA EMPLEADOS: \n");
+    for(i=0;i<len;i++)
+    {
+        if(employeeList[i].isEmpty==OCUPADO && employeeList[i].id==id)
+        {
             printEmployees(employeeList[i]);
+            printf("1.Nombre\n2.Apellido\n3.Salario\n4.Sector\n");
+            opcion=getint("elija la opcion que quiera modificar","ingrese opcion valida",1,4);
+            switch(opcion)
+            {
+             case 1:
+                getstring("ingrese nombre nuevo",nombreAux,51);
+                getstring("realizar modificacion?",respuestaUsuario,3);
+                if(strcmp(respuestaUsuario,respuesta)>0)
+                {
+                    strcpy(employeeList[i].name,nombreAux);
+                     printf("modificacion completa\n");
+                        retorno=0;
+                        break;
+                 }else
+                     {
+
+                        printf("modificacion cancelada\n");
+                        break;
+
+                     }
+
+                break;
+             case 2:
+                getstring("ingrese apellido nuevo",apellidoAux,51);
+                getstring("realizar modificacion?",respuestaUsuario,3);
+                if(strcmp(respuestaUsuario,respuesta)>0)
+                {
+                    strcpy(employeeList[i].lastname,apellidoAux);
+                     printf("modificacion completa\n");
+                        retorno=0;
+                        break;
+                 }else
+                     {
+
+                        printf("modificacion cancelada\n");
+                        break;
+                     }
+
+                    break;
+             case 3:
+                 salarioAux=getfloat("ingrese salario desde 30000 hasta 100000","reingrese salario",30000,100000);
+                getstring("realizar modificacion?",respuestaUsuario,3);
+                if(strcmp(respuestaUsuario,respuesta)>0)
+                {
+                   employeeList[i].salary=salarioAux;
+                     printf("modificacion completa\n");
+                        retorno=0;
+                        break;
+                 }else
+                     {
+
+                        printf("modificacion cancelada\n");
+                        break;
+                     }
+                break;
+                case 4:
+                    sectorAux=getint("ingrese sector nuevo","reingrese sector",1,20);
+                    getstring("realizar modificacion?",respuestaUsuario,3);
+                    if(strcmp(respuestaUsuario,respuesta)>0)
+                    {
+                        employeeList[i].sector=sectorAux;
+                        printf("modificacion completa\n");
+                        retorno=0;
+                        break;
+                    }else
+                     {
+
+                        printf("modificacion cancelada\n");
+                        break;
+
+                     }
+                        break;
+            }
 
 
+        }
+    }
 
+    }
 
+    return retorno;
 
-    }*/
+}
 
 

@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1589598198 source:c:\users\ayu\documents\repositorios\tp_laboratorio_2\trabajopracticolab2\trabajopractico2lab\arrayemployee.c
+1589598956 source:c:\users\ayu\documents\repositorios\tp_laboratorio_2\trabajopracticolab2\trabajopractico2lab\arrayemployee.c
 	"ArrayEmployee.h"
 
-1589598523 c:\users\ayu\documents\repositorios\tp_laboratorio_2\trabajopracticolab2\trabajopractico2lab\arrayemployee.h
+1589598814 c:\users\ayu\documents\repositorios\tp_laboratorio_2\trabajopracticolab2\trabajopractico2lab\arrayemployee.h
 	<stdio.h>
 	"funcionesPractica.h"
 
@@ -13,7 +13,7 @@
 1589580448 source:c:\users\ayu\documents\repositorios\tp_laboratorio_2\trabajopracticolab2\trabajopractico2lab\funcionespractica.c
 	"funcionesPractica.h"
 
-1589598427 source:c:\users\ayu\documents\repositorios\tp_laboratorio_2\trabajopracticolab2\trabajopractico2lab\main.c
+1589599053 source:c:\users\ayu\documents\repositorios\tp_laboratorio_2\trabajopracticolab2\trabajopractico2lab\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayEmployee.h"
