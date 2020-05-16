@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ArrayEmployee.h"
-#define EMPLOYEE 10
+#define EMPLOYEE 1000
 
 int main()
 {

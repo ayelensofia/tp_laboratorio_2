@@ -312,7 +312,7 @@ int printEmployeeSort(Employee employeeList[],int len)
             errorValue=0;
         break;
     case 1:
-            //sortEmployeeDes(employeeList,len);
+            sortEmployeeDes(employeeList,len);
             printEmployeesList(employeeList,len);
             errorValue=0;
         break;
@@ -321,4 +321,49 @@ int printEmployeeSort(Employee employeeList[],int len)
 
 
     return errorValue;
+}
+int sortEmployeeDes(Employee employeeList[],int len)
+{
+    int i;
+    int j;
+    int errorValue=-1;
+    Employee auxEmployee;
+    for(i=0;i<len-1;i++)
+    {
+        if(employeeList[i].isEmpty!=OCUPADO)
+        {
+            continue;
+        }
+        for(j=i+1;j<len;j++)
+        {
+             if(employeeList[j].isEmpty!=OCUPADO)
+            {
+                continue;
+            }
+            if(strcmp(employeeList[i].lastname,employeeList[j].lastname)<0)
+            {
+                    auxEmployee=employeeList[i];
+                    employeeList[i]=employeeList[j];
+                    employeeList[j]=auxEmployee;
+
+                    errorValue=0;
+            }else
+                {
+                    if(strcmp(employeeList[i].lastname,employeeList[j].lastname)==0)
+                    {
+                        if(employeeList[i].sector<employeeList[j].sector)
+                        {
+                            auxEmployee=employeeList[i];
+                            employeeList[i]=employeeList[j];
+                            employeeList[j]=auxEmployee;
+                            errorValue=0;
+                            errorValue=0;
+
+                        }
+                    }
+                }
+        }
+    }
+    return errorValue;
+
 }
