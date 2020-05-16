@@ -13,18 +13,18 @@ int main()
     float salary;
     int sector;
     int accountantEmployee=0;
-    float totalSalary = 0.00;
+
 
 
 
     do
     {
         printf("1.ALTA\n2.MODIFICAR\n3.BAJA\n4.INFORMES\n");
-        opcion=getint("ingrese opcion","ingrese opcion valida",1,4);
+        opcion=getint("Elija una opcion","ingrese opcion válida",1,4);
         switch(opcion)
         {
         case 1:
-            addEmployee(listEmployee,EMPLOYEE,id,name,lastname,salary,sector,accountantEmployee,totalSalary);
+            addEmployee(listEmployee,EMPLOYEE,id,name,lastname,salary,sector,accountantEmployee);
             accountantEmployee++;
 
             break;
@@ -38,7 +38,7 @@ int main()
         case 4:
             printf("1.Listado de los empleados ordenados alfabeticamente por apellido y sector\n");
             printf("2.Total y promedio de los salarios, y cuantos empleados superan el salario promedio\n");
-            opcion=getint("elija opcion","reingrese opcion",1,2);
+            opcion=getint("Elija opcion","reingrese opcion",1,2);
             switch(opcion)
             {
                case 1:
@@ -46,9 +46,15 @@ int main()
 
                     break;
                case 2:
-                    printListSalaryTotal(listEmployee,EMPLOYEE);
-                     printListSalaryPromedy(listEmployee,EMPLOYEE,accountantEmployee);
-                     printEmployeeExceedsSalaryAverage(listEmployee,EMPLOYEE,accountantEmployee);
+                   printf("\n");
+                   printf("TOTAL DE SALARIOS:\n ");
+                   printListSalaryTotal(listEmployee,EMPLOYEE);
+                   printf("/****************************************************************/\n");
+                   printf("PROMEDIO DE LOS SALARIOS:\n ");
+                   printListSalaryPromedy(listEmployee,EMPLOYEE,accountantEmployee);
+                   printf("/*****************************************************************/\n");
+                   printf("CANTIDAD DE EMPLEADOS QUE SUPERAN EL PROMEDIO DE LOS SALARIOS:\n");
+                   printEmployeeExceedsSalaryAverage(listEmployee,EMPLOYEE,accountantEmployee);
                    break;
             }
 

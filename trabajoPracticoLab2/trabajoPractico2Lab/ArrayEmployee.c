@@ -27,7 +27,7 @@ int searchFree(Employee employeeList[],int len)
     }
     return index;
 }
-int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname[],float salary,int sector,int accountant,float totalSalary)
+int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname[],float salary,int sector,int accountant)
 {
     int index;
     index=searchFree(employeeList,len);
@@ -46,9 +46,7 @@ int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname
         employeeList[index].salary=salary;
         employeeList[index].sector=sector;
         employeeList[index].isEmpty=OCUPADO;
-        totalSalary = salary + totalSalary;
-        printf("total salario en funcion es: %f\n",totalSalary);
-        printf("salario en funcion es: %f\n",salary);
+
 
     }
 
@@ -58,12 +56,12 @@ int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname
 int printEmployees(Employee aEmployee)
 {
     int errorValue=-1;
-        printf("%8d%8s%8s%8f%8d%8d\n",aEmployee.id,
-                          aEmployee.name,
-                          aEmployee.lastname,
-                          aEmployee.salary,
-                          aEmployee.sector,
-                          aEmployee.isEmpty);
+        printf("ID:\tNAME:\tLASTNAME:\tSALARY:\tSECTOR:\n ");
+        printf("%d%11s%11s%15.2f%4d\n",aEmployee.id,
+                                    aEmployee.name,
+                                    aEmployee.lastname,
+                                    aEmployee.salary,
+                                    aEmployee.sector);
 
         errorValue=0;
 
@@ -138,8 +136,8 @@ int modifyEmployee(Employee employeeList[],int len,int id)
             switch(opcion)
             {
              case 1:
-                getstring("ingrese nombre nuevo",nombreAux,51);
-                getstring("realizar modificacion?",respuestaUsuario,3);
+                getstring("ingrese nombre nuevo: ",nombreAux,51);
+                getstring("realizar modificacion?: ",respuestaUsuario,3);
                 if(strcmp(respuestaUsuario,respuesta)>0)
                 {
                     strcpy(employeeList[i].name,nombreAux);
@@ -156,8 +154,8 @@ int modifyEmployee(Employee employeeList[],int len,int id)
 
                 break;
              case 2:
-                getstring("ingrese apellido nuevo",apellidoAux,51);
-                getstring("realizar modificacion?",respuestaUsuario,3);
+                getstring("ingrese apellido nuevo: ",apellidoAux,51);
+                getstring("realizar modificacion?: ",respuestaUsuario,3);
                 if(strcmp(respuestaUsuario,respuesta)>0)
                 {
                     strcpy(employeeList[i].lastname,apellidoAux);
@@ -173,8 +171,8 @@ int modifyEmployee(Employee employeeList[],int len,int id)
 
                     break;
              case 3:
-                 salarioAux=getfloat("ingrese salario desde 30000 hasta 100000","reingrese salario",30000,100000);
-                getstring("realizar modificacion?",respuestaUsuario,3);
+                 salarioAux=getfloat("ingrese salario desde 30000 hasta 100000: ","reingrese salario: ",30000,100000);
+                getstring("¿realizar modificacion?: ",respuestaUsuario,3);
                 if(strcmp(respuestaUsuario,respuesta)>0)
                 {
                    employeeList[i].salary=salarioAux;
@@ -189,7 +187,7 @@ int modifyEmployee(Employee employeeList[],int len,int id)
                      }
                 break;
                 case 4:
-                    sectorAux=getint("ingrese sector nuevo","reingrese sector",1,20);
+                    sectorAux=getint("ingrese sector nuevo: ","reingrese sector: ",1,20);
                     getstring("realizar modificacion?",respuestaUsuario,3);
                     if(strcmp(respuestaUsuario,respuesta)>0)
                     {
@@ -225,18 +223,17 @@ int removeEmployee(Employee employeeList[],int len,int id)
     strcpy(respuesta,"no");
     int index=-1;
     printEmployeesList(employeeList,len);
-    id=getint("ingrese id a eliminar de 1 a 1000","reingrese id ",1,1000);
+    id=getint("Ingrese id a eliminar de 1 a 1000: ","reingrese id: ",1,1000);
     index=findEmployeeById(employeeList,len,id);
-    printf("el index es: %d\n",index);
     if(index!=-1)
     {
         for(i=0;i<len;i++)
          {
             if(employeeList[i].isEmpty==OCUPADO && employeeList[i].id==id)
             {
-                printf("se elimara a:\n");
+                printf("Se elimara a:\n");
                 printEmployees(employeeList[i]);
-                getstring("realizar eliminacion?",respuestaUsuario,3);
+                getstring("¿realizar eliminacion?: ",respuestaUsuario,3);
                 if(strcmp(respuestaUsuario,respuesta)>0)
                 {
                      printf("elimacion completa\n");
@@ -307,9 +304,9 @@ int printEmployeeSort(Employee employeeList[],int len)
 {
     int opcion;
     int errorValue=-1;
-    printf("0.mostrar empleados ordenados de forma ascendente:\n");
-    printf("1.mostrar empleados de forma descendente:\n");
-    opcion=getint("elija opcion","ingrese opcion valida",0,1);
+    printf("0.mostrar empleados ordenados de forma ascendente:\n ");
+    printf("1.mostrar empleados de forma descendente:\n ");
+    opcion=getint("elija opcion:  ","ingrese opcion valida: ",0,1);
     switch(opcion)
     {
     case 0:
@@ -396,15 +393,11 @@ int printListSalaryTotal(Employee employeeList[],int len)
     int errorValue=-1;
     float total;
     total=salaryEmpployee(employeeList,len);
-    int i;
 
-          if(employeeList[i].isEmpty==OCUPADO)
-            {
-                printf("el total de salarios es:%.2f\n ",total);
-                errorValue=0;
 
-            }
+    printf("El total de salarios es:%.2f\n ",total);
 
+    errorValue=0;
 
 
     return errorValue;
@@ -424,14 +417,12 @@ int printListSalaryPromedy(Employee listEmployee[],int len, int accountantEmploy
 {
     int errorValue=-1;
     float promedy;
-    int i;
+
     promedy=SalaryPromedy(listEmployee,len,accountantEmployee);
-       if(listEmployee[i].isEmpty==OCUPADO)
-            {
-                printf("el promedio de salarios es:%.2f\n ",promedy);
+            printf("El promedio de salarios es:%.2f\n ",promedy);
                 errorValue=0;
 
-            }
+
 
     return errorValue;
 }
@@ -458,15 +449,14 @@ int employeeExceedsSalaryAverage(Employee listEmployee[],int len,int accountantE
 int printEmployeeExceedsSalaryAverage(Employee listEmployee[],int len,int accountantEmployee)
 {
     int errorValue=-1;
-    int i;
+
     int quantityEmployeeExceedsSalaryAverage;
     quantityEmployeeExceedsSalaryAverage=employeeExceedsSalaryAverage(listEmployee,len,accountantEmployee);
-    if(listEmployee[i].isEmpty==OCUPADO)
-            {
-                printf("la cantidad de empleados que superan el salario promedio es:%d\n ",quantityEmployeeExceedsSalaryAverage);
+
+                printf("La cantidad es:%d\n ",quantityEmployeeExceedsSalaryAverage);
                 errorValue=0;
 
-            }
+
 
 
                 errorValue=0;
