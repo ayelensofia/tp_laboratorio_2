@@ -19,11 +19,22 @@ int main()
 
     do
     {
-        printf("1.ALTA\n2.MODIFICAR\n3.BAJA\n4.INFORMES\n");
-        opcion=getint("Elija una opcion","ingrese opcion válida",1,4);
+                                  printf("***********************************************\n");
+                                  printf("\n");
+                                  printf("*****************MENU USUARIO******************\n");
+                                  printf("\n");
+                                  printf("***********************************************\n");
+
+        printf("**1.ALTA\n**2.MODIFICAR\n**3.BAJA\n**4.INFORMES\n**5.SALIR\n");
+        opcion=getint("#Elija una opcion: ","#ingrese opcion valida: ",1,5);
         switch(opcion)
         {
         case 1:
+            id=generadorId(1,accountantEmployee);
+            getstring("ingrese nombre: ",name,51);
+            getstring("ingrese apellido: ",lastname,51);
+            salary=getfloat("ingrese salario de 30000 hasta 100000: ","reingrese salario: ",30000,100000);
+            sector=getint("ingrese sector de 1 a 20: ","ingrese sector valido: ",1,20);
             addEmployee(listEmployee,EMPLOYEE,id,name,lastname,salary,sector,accountantEmployee);
             accountantEmployee++;
 
@@ -61,7 +72,8 @@ int main()
             break;
 
         }
-
+        system("pause");
+        system("cls");
 
     }while(opcion!=5);
 }

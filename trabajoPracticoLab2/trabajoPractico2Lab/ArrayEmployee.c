@@ -33,11 +33,7 @@ int addEmployee(Employee employeeList[],int len,int id,char name[],char lastname
     index=searchFree(employeeList,len);
     if(index!=-1)
     {
-        id=generadorId(1,accountant);
-        getstring("ingrese nombre: ",name,51);
-        getstring("ingrese apellido: ",lastname,51);
-        salary=getfloat("ingrese salario de 30000 hasta 100000: ","reingrese salario: ",30000,100000);
-        sector=getint("ingrese sector de 1 a 20: ","ingrese sector valido: ",1,20);
+
 
 
         employeeList[index].id=id;
